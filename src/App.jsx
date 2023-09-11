@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { createContext, useState } from "react"
 import TopBar from "./components/TopBar"
 import rockIcon from './assets/icon-rock.svg'
 import paperIcon from './assets/icon-paper.svg'
@@ -40,14 +40,18 @@ const variants = [
   }
 ]
 
+export const ChoosenContext = createContext()
+
 function App() {
   const [score, setScore] = useState(0)
+  const [choosen, setChoosen] = useState(1);
+  console.log(choosen)
 
   return (
-    <>
+    <ChoosenContext.Provider value={setChoosen}>
       <TopBar variants={variants} score={score} />
       <Game variants={variants} />
-    </>
+    </ChoosenContext.Provider>
   )
 }
 

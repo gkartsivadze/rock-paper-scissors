@@ -13,9 +13,8 @@
     transform: translate(-50%, -50%) rotate(calc(72deg * var(--position, 1) - 90deg)) translateX(10rem) rotate(calc(-72deg * var(--position, 1) + 90deg));
 }
 
-#choose > button > img {
+#choose > button img {
     width: 4rem;
     height: 4rem;
     object-fit: contain;
-    border-radius: 50%;
 }

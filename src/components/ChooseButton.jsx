@@ -1,5 +1,9 @@
+import { useContext } from "react"
+import { ChoosenContext } from "../App"
+
 export default function ChooseButton({ variant }) {
-    
+    const setChoise = useContext(ChoosenContext);
+
     const style = [
         'bg-rock',
         'bg-paper',
@@ -10,9 +14,10 @@ export default function ChooseButton({ variant }) {
 
     return (
         <button
+            onClick={() => setChoise(variant.id)}
             style={{ '--position': variant.id }}
             className={`bg-${variant.color} rounded-full `}>
-            <img className=" bg-white" src={variant.icon} />
+                <img src={variant.icon} />
         </button>
     )
 };

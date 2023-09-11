@@ -1,4 +1,5 @@
-export default function TopBar({variants, score}) {
+export default function TopBar({ variants, score }) {
+    
     return (
         <nav className="flex justify-between w-3/5 border-gray-400 border-2 border-solid rounded-3xl p-6">
             <ul className=" [&>*]:text-2xl [&>*]:uppercase [&>*]:leading-5 list-none">
