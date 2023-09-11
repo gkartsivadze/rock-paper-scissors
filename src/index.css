@@ -10,7 +10,7 @@
     height: 8rem;
 
     position: absolute;
-    transform: translate(-50%, -50%) rotate(calc(72deg * var(--position, 1) - 90deg)) translateX(10rem) rotate(calc(-72deg * var(--position, 1) + 90deg));
+    transform: translate(-50%, -50%) rotate(calc(72deg * calc(var(--position, 1) - 1) - 90deg)) translateX(10rem) rotate(calc(-72deg * calc(var(--position, 1) - 1) + 90deg));
 }
 
 #choose > button img {

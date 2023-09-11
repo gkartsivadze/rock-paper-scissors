@@ -10,9 +10,9 @@ import Game from "./components/Game"
 const variants = [
   {
     id: 1,
-    name: 'rock',
-    color: 'rock',
-    icon: rockIcon
+    name: 'scissors',
+    color: 'scissors',
+    icon: scissorsIcon
   },
   {
     id: 2,
@@ -22,9 +22,9 @@ const variants = [
   },
   {
     id: 3,
-    name: 'scissors',
-    color: 'scissors',
-    icon: scissorsIcon
+    name: 'rock',
+    color: 'rock',
+    icon: rockIcon
   },
   {
     id: 4,
@@ -45,7 +45,6 @@ export const ChoosenContext = createContext()
 function App() {
   const [score, setScore] = useState(0)
   const [choosen, setChoosen] = useState(1);
-  console.log(choosen)
 
   return (
     <ChoosenContext.Provider value={setChoosen}>
