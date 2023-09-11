@@ -1,3 +1,21 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+#choose > * {
+    display: grid;
+    place-items: center;
+    padding: 1rem;
+    width: 8rem;
+    height: 8rem;
+
+    position: absolute;
+    transform: translate(-50%, -50%) rotate(calc(72deg * var(--position, 1) - 90deg)) translateX(10rem) rotate(calc(-72deg * var(--position, 1) + 90deg));
+}
+
+#choose > button > img {
+    width: 4rem;
+    height: 4rem;
+    object-fit: contain;
+    border-radius: 50%;
+}
