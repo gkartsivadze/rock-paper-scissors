@@ -13,8 +13,19 @@
     transform: translate(-50%, -50%) rotate(calc(72deg * calc(var(--position, 1) - 1) - 90deg)) translateX(10rem) rotate(calc(-72deg * calc(var(--position, 1) - 1) + 90deg));
 }
 
-#choose > button img {
-    width: 4rem;
-    height: 4rem;
-    object-fit: contain;
+#choose > button div {
+    background: var(--background) no-repeat,
+                white;
+    background-position: center;
 }
+
+/* #choose > button div:after {
+    content: "";
+
+    position: absolute;
+
+    background-color: grey;
+
+    width: 15rem;
+    height: 5rem;
+} */
