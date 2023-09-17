@@ -9,6 +9,8 @@
     width: 8rem;
     height: 8rem;
 
+    z-index: 1;
+
     position: absolute;
     transform: translate(-50%, -50%) rotate(calc(72deg * calc(var(--position, 1) - 1) - 90deg)) translateX(10rem) rotate(calc(-72deg * calc(var(--position, 1) - 1) + 90deg));
 }
@@ -17,15 +19,21 @@
     background: var(--background) no-repeat,
                 white;
     background-position: center;
+    
 }
 
-/* #choose > button div:after {
+#choose > button div:after {
     content: "";
 
     position: absolute;
+    top: calc(50% - 1rem);
+    z-index: -2;
 
-    background-color: grey;
+    background: linear-gradient(to right, black, rgb(0, 255, 0));
 
     width: 15rem;
-    height: 5rem;
-} */
+    height: 2rem;
+
+    transform-origin: left center;
+    transform: rotate(calc(var(--position) * 36deg + calc(var(--position) - 1) * 36deg));
+}
