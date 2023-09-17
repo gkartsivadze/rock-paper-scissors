@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-#choose > * {
+#choose > button {
     display: grid;
     place-items: center;
     padding: 1rem;
@@ -16,24 +16,9 @@
 }
 
 #choose > button div {
+    
     background: var(--background) no-repeat,
                 white;
     background-position: center;
     
-}
-
-#choose > button div:after {
-    content: "";
-
-    position: absolute;
-    top: calc(50% - 1rem);
-    z-index: -2;
-
-    background: linear-gradient(to right, black, rgb(0, 255, 0));
-
-    width: 15rem;
-    height: 2rem;
-
-    transform-origin: left center;
-    transform: rotate(calc(var(--position) * 36deg + calc(var(--position) - 1) * 36deg));
 }
