@@ -1,13 +1,11 @@
+import Pentagon from "../assets/Pentagon";
 import ChooseButton from "./ChooseButton";
-import pentagonImg from "../assets/pentagon.svg"
 
 export default function Choose({ variants }) {
     return (
         <main id="choose" className=" row-span-3 relative">
             { variants.map(variant => <ChooseButton key={variant.id} variant={variant} />) }
-            {/* <img
-                src={pentagonImg}
-                alt="" /> */}
+            <Pentagon className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 -z-10 fill-gray-600" />
         </main>
     )
 };
