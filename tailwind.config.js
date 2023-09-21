@@ -17,6 +17,13 @@ export default {
       fontFamily: {
         'default': 'Barlow Semi Condensed'
       },
+      textColor: {
+        'dark': 'hsl(229, 25%, 31%)',
+        'score': 'hsl(229, 64%, 46%)',
+      },
+      outlineColor: {
+        'header': 'hsl(217, 16%, 45%)'
+      }
     },
   },
   plugins: [],
