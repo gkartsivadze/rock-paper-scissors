@@ -2,6 +2,7 @@ import { createContext, useState, useEffect } from "react";
 import Choose from "./Choose";
 import Rules from "./Rules";
 import Chart from "./Chart";
+import gsap from "gsap";
 
 
 export const ChoosenContext = createContext()
@@ -13,23 +14,15 @@ export default function Game({ variants, setScore }) {
 
     useEffect(() => {
         if (choosen) {
-            document.getElementById(`variant_button_${choosen}`).animate({
-                transform: "translate(-50%, -100%) translate(-15vw) scale(2)",
-            }, {
-                delay: 250,
-                duration: 500,
-                fill: "forwards"
+
+            gsap.to(`#variant_button_${choosen}`, 0.4, {
+                transform: "translate(-50%, -100%) translate(-15vw) scale(2)"
             })
 
-            document.querySelectorAll(`button[data-choice-button]:not(#variant_button_${choosen})`).forEach(elem => {
-                elem.animate({
+            gsap.to(`button[data-choice-button]:not(#variant_button_${choosen})`, 0.25, {
                     opacity: 0,
                     transform: "translate(-50%, -50%) scale(0)"
-                }, {
-                    duration: 500,
-                    fill: "forwards"
                 })
-            })
         }
     }, [choosen])
 
@@ -39,8 +32,8 @@ export default function Game({ variants, setScore }) {
             <ChoosenContext.Provider value={setChoosen}>
 
                 <main id="choose" className="relative row-span-3">
-                    <Choose variants={variants} />
                     {chartState && <Chart />}
+                    <Choose variants={variants} />
                 </main>
                 {rulesState && <Rules setRulesState={setRulesState} />}
             </ChoosenContext.Provider>
