@@ -1,7 +1,7 @@
 import rulesImage from '../assets/image-rules-bonus.svg'
 import closeIcon from '../assets/icon-close.svg'
 
-export default function Rules({setRulesState}) {
+export default function Rules({ setRulesState }) {
     function closeRules() {
         setRulesState(false);
     }

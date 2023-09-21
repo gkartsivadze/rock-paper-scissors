@@ -1,4 +1,4 @@
-import { createContext, useState } from "react"
+import { useState } from "react"
 import TopBar from "./components/TopBar"
 import Game from "./components/Game"
 
@@ -35,17 +35,13 @@ const variants = [
   }
 ]
 
-export const ChoosenContext = createContext()
-
 function App() {
   const [score, setScore] = useState(0)
-  const [choosen, setChoosen] = useState(1);
 
-  return (
-    <ChoosenContext.Provider value={setChoosen}>
+  return (<>
       <TopBar variants={variants} score={score} />
-      <Game variants={variants} />
-    </ChoosenContext.Provider>
+      <Game variants={variants} setScore={setScore} />
+    </>
   )
 }
 

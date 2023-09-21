@@ -11,11 +11,7 @@
 }
 
 #choose button > div {
-    height: 5rem;
-    width: 5rem;
-
-    background: var(--background) no-repeat,
+    background: var(--background) no-repeat center,
                 white;
     background-size: 60%;
-    background-position: center;
 }
