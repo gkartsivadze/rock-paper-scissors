@@ -8,9 +8,9 @@ export default function ChooseButton({ variant }) {
         <button
             onClick={() => setChoise(variant.id)}
             style={{ '--position': variant.id }}
-            className={`${variant.color} rounded-full`}>
+            className={`${variant.color} w-[6vw] aspect-square rounded-full border-b-8 border-gray-300/25`}>
                 <div
-                    className="shadow-inner shadow-gray-600 w-24 h-24 rounded-full"
+                    className=" border-t-4 border-gray-300 w-8/12 aspect-square rounded-full"
                     style={{'--background': `url(${variant.icon})`}}></div>
         </button>
     )

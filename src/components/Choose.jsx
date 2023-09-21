@@ -1,9 +1,11 @@
+import Pentagon from "../assets/Pentagon";
 import ChooseButton from "./ChooseButton";
 
 export default function Choose({ variants }) {
     return (
-        <main id="choose" className=" row-span-3">
+        <main id="choose" className="relative row-span-3">
+            <Pentagon className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" />
             { variants.map(variant => <ChooseButton key={variant.id} variant={variant} />) }
         </main>
     )
-};
+}

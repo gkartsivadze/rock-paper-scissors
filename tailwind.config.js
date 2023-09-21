@@ -16,7 +16,7 @@ export default {
       },
       fontFamily: {
         'default': 'Barlow Semi Condensed'
-      }
+      },
     },
   },
   plugins: [],
