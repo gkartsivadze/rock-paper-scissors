@@ -10,7 +10,10 @@
     transform: translate(-50%, -50%) rotate(calc(72deg * calc(var(--position, 1) - 1) - 90deg)) translateX(10rem) rotate(calc(-72deg * calc(var(--position, 1) - 1) + 90deg));
 }
 
-#choose > button div {
+#choose button > div {
+    height: 5rem;
+    width: 5rem;
+
     background: var(--background) no-repeat,
                 white;
     background-size: 60%;
