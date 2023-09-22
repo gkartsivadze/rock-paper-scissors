@@ -17,14 +17,21 @@ export default function Game({ variants, setScore }) {
 
             setChartState(true)
 
-            gsap.to(`#variant_button_${choosen}`, 0.4, {
-                transform: "translate(-50%, -100%) translate(-15vw) scale(2)"
-            })
+            document.getElementById(`variant_button_${choosen}`).animate({
+                    transform: "translate(-50%, -50%) translate(-15vw) scale(2)"
+            }, {
+                fill: "forwards",
+                duration: 1000})
 
-            gsap.to(`button[data-choice-button]:not(#variant_button_${choosen})`, 0.25, {
+            document.querySelectorAll(`button[data-choice-button]:not(#variant_button_${choosen})`).forEach(element => {
+                element.animate({
                     opacity: 0,
                     transform: "translate(-50%, -50%) scale(0)"
+                }, {
+                    duration: 250,
+                    fill: "forwards"
                 })
+            })
         }
     }, [choosen])
 
