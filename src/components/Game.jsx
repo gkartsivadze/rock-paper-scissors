@@ -10,10 +10,12 @@ export const ChoosenContext = createContext()
 export default function Game({ variants, setScore }) {
     const [choosen, setChoosen] = useState(false);
     const [rulesState, setRulesState] = useState(false)
-    const [chartState, setChartState] = useState(true)
+    const [chartState, setChartState] = useState(false)
 
     useEffect(() => {
         if (choosen) {
+
+            setChartState(true)
 
             gsap.to(`#variant_button_${choosen}`, 0.4, {
                 transform: "translate(-50%, -100%) translate(-15vw) scale(2)"
@@ -30,10 +32,9 @@ export default function Game({ variants, setScore }) {
     return (
         <>
             <ChoosenContext.Provider value={setChoosen}>
-
-                <main id="choose" className="relative row-span-3">
+                <main id="choose" className="relative h-full w-full">
                     {chartState && <Chart />}
-                    <Choose variants={variants} />
+                    <Choose variants={variants} pentagonState={!chartState} />
                 </main>
                 {rulesState && <Rules setRulesState={setRulesState} />}
             </ChoosenContext.Provider>
