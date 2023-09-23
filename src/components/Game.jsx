@@ -9,7 +9,7 @@ export const ChoosenContext = createContext()
 
 export default function Game({ variants, setScore }) {
     const [choosen, setChoosen] = useState(false);
-    const [rulesState, setRulesState] = useState(false)
+    const [rulesState, setRulesState] = useState(true)
     const [chartState, setChartState] = useState(false)
     const [computerSymbol, setComputerSymbol] = useState();
 
@@ -38,10 +38,30 @@ export default function Game({ variants, setScore }) {
                 })
             })
 
+            if(choosen == 1) {
+                if(randomNum == 2 || randomNum == 4) {
+                    add();
+                } else if(randomNum == 3 || randomNum == 5) {
+                    reset();
+                }
+            }
 
+            if(choosen == 2) {
+                
+            }
+
+            
+            
         }
     }, [choosen])
+    
+    function add() {
+        setScore(prev => prev + 1)
+    }
 
+    function reset() {
+        setScore(0)
+    }
 
     return (
         <>
