@@ -7,7 +7,7 @@ const variants = [
     id: 1,
     name: 'scissors',
     color: 'bg-scissors',
-    icon: '/icon-rock.svg',
+    icon: '/icon-scissors.svg',
     wins: [2,4]
   },
   {
@@ -21,7 +21,7 @@ const variants = [
     id: 3,
     name: 'rock',
     color: 'bg-rock',
-    icon: '/icon-scissors.svg',
+    icon: '/icon-rock.svg',
     wins: [4,1]
   },
   {

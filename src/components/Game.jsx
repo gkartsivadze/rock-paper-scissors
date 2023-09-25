@@ -3,6 +3,7 @@ import Choose from "./Choose";
 import Rules from "./Rules";
 import Chart from "./Chart";
 import ComputerChoice from "./ComputerChoice";
+import LostAction from "../actions/LostAction";
 
 
 export const ChoosenContext = createContext()
@@ -10,43 +11,36 @@ export const ChoosenContext = createContext()
 export default function Game({ variants, setScore }) {
     const [choosen, setChoosen] = useState(false);
     const [rulesState, setRulesState] = useState(false)
-    const [chartState, setChartState] = useState(false)
+    const [chartEnabledState, setChartEnabledState] = useState(false)
+    const [chartState, setChartState] = useState(0)
     const [computerSymbol, setComputerSymbol] = useState();
 
     useEffect(() => {
         if (choosen) {
 
-            setChartState(true)
-            let randomNum = Math.round(Math.random() * 4 + 1)
-            console.log("Choosen: ", choosen, "RandomNum: ", randomNum)
+            setChartEnabledState(true)
+            // let randomNum = Math.round(Math.random() * 4 + 1)
+            let randomNum = Math.round(1) // TEST
             setComputerSymbol(randomNum)
 
-            document.getElementById(`variant_button_${choosen}`).animate({
-                transform: "translate(-50%, -50%) translate(-15vw) scale(2)"
-            }, {
-                fill: "forwards",
-                duration: 1000
-            })
+            document.getElementById(`variant_button_${choosen}`).classList.add("user_choice_active");
 
             document.querySelectorAll(`button[data-choice-button]:not(#variant_button_${choosen})`).forEach(element => {
-                element.animate({
-                    opacity: 0,
-                    transform: "translate(-50%, -50%) scale(0)"
-                }, {
-                    duration: 250,
-                    fill: "forwards"
-                })
+                element.classList.add("active")
             })
 
-            if(variants.find(x => x.id == randomNum).wins.includes(choosen)) {
+            if (variants.find(x => x.id == randomNum).wins.includes(choosen)) {
                 setTimeout(() => {
                     add()
-                }, 500)
-            } else if(randomNum == choosen) {
+                    LostAction(choosen);
+                    setChartState(1)
+                }, 1500)
+            } else if (randomNum == choosen) {
+
             } else {
                 setTimeout(() => {
                     reset();
-                }, 500)
+                }, 1500)
             }
 
 
@@ -64,15 +58,19 @@ export default function Game({ variants, setScore }) {
         console.log("reset");
     }
 
+    function rematch() {
+
+    }
+
     return (
         <>
             <ChoosenContext.Provider value={setChoosen}>
                 <main id="choose" className="relative h-full w-full">
-                    {chartState && <>
-                        <Chart />
+                    {chartEnabledState && <>
+                        <Chart chartState={chartState} rematch={rematch} />
                         <ComputerChoice variant={variants.find(x => x.id == computerSymbol)} />
                     </>}
-                    <Choose variants={variants} pentagonState={!chartState} />
+                    <Choose variants={variants} pentagonState={!chartEnabledState} />
                 </main>
                 {rulesState && <Rules setRulesState={setRulesState} />}
             </ChoosenContext.Provider>

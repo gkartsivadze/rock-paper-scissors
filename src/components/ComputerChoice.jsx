@@ -1,13 +1,12 @@
-import { useEffect, useRef } from "react"
+import { useEffect } from "react"
 
 export default function ComputerChoice({ variant }) {
-    const buttonRef = useRef();
 
     useEffect(() => {
-        buttonRef.current.animate({
+        document.getElementById("computer_choice").animate({
             opacity: 1
         }, {
-            duration: 500,
+            duration: 200,
             delay: 1000,
             fill: "forwards"
         })
@@ -15,8 +14,8 @@ export default function ComputerChoice({ variant }) {
     
     return (
         <button
-            ref={buttonRef}
-            className={`${variant.color} absolute top-1/2 left-1/2 !translate-x-[8vw] -translate-y-1/2 w-[14vw] aspect-square rounded-full shadow-[inset_0_-10px_0_-5px_rgb(0,0,0,0.3)] opacity-0`}
+            id="computer_choice"
+            className={`${variant.color} absolute top-1/2 left-1/2 w-[14vw] aspect-square grid place-items-center rounded-full shadow-[inset_0_-10px_0_-5px_rgb(0,0,0,0.3)]`}
             >
                 <div
                     className=" shadow-[inset_0_10px_0_-5px_rgb(0,0,0,0.3)] w-9/12 aspect-square rounded-full"

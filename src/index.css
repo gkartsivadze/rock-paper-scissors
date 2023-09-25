@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-#choose > button {
+#choose > button[data-choice-button] {
     display: grid;
     place-items: center;
     
@@ -13,4 +13,20 @@
     background: var(--background) no-repeat center,
                 white;
     background-size: 60%;
+}
+
+button[data-choice-button].active {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0);
+}
+
+.user_choice_active {
+    transform: translate(-50%, -50%) translate(-10vw) scale(2);
+}
+
+#computer_choice {
+    opacity: 0;
+    transform: translate(-50%, -50%) translate(3, -50%);
+
+    transition: 0.3s;
 }
