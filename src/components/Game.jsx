@@ -9,7 +9,7 @@ export const ChoosenContext = createContext()
 
 export default function Game({ variants, setScore }) {
     const [choosen, setChoosen] = useState(false);
-    const [rulesState, setRulesState] = useState(true)
+    const [rulesState, setRulesState] = useState(false)
     const [chartState, setChartState] = useState(false)
     const [computerSymbol, setComputerSymbol] = useState();
 
@@ -17,8 +17,8 @@ export default function Game({ variants, setScore }) {
         if (choosen) {
 
             setChartState(true)
-            let randomNum = Math.round(Math.random() * 4)
-            console.log(randomNum)
+            let randomNum = Math.round(Math.random() * 4 + 1)
+            console.log("Choosen: ", choosen, "RandomNum: ", randomNum)
             setComputerSymbol(randomNum)
 
             document.getElementById(`variant_button_${choosen}`).animate({
@@ -38,29 +38,30 @@ export default function Game({ variants, setScore }) {
                 })
             })
 
-            if(choosen == 1) {
-                if(randomNum == 2 || randomNum == 4) {
-                    add();
-                } else if(randomNum == 3 || randomNum == 5) {
+            if(variants.find(x => x.id == randomNum).wins.includes(choosen)) {
+                setTimeout(() => {
+                    add()
+                }, 500)
+            } else if(randomNum == choosen) {
+            } else {
+                setTimeout(() => {
                     reset();
-                }
+                }, 500)
             }
 
-            if(choosen == 2) {
-                
-            }
 
-            
-            
+
         }
     }, [choosen])
-    
+
     function add() {
         setScore(prev => prev + 1)
+        console.log("add");
     }
 
     function reset() {
         setScore(0)
+        console.log("reset");
     }
 
     return (
@@ -69,7 +70,7 @@ export default function Game({ variants, setScore }) {
                 <main id="choose" className="relative h-full w-full">
                     {chartState && <>
                         <Chart />
-                        <ComputerChoice variant={variants[computerSymbol]} />
+                        <ComputerChoice variant={variants.find(x => x.id == computerSymbol)} />
                     </>}
                     <Choose variants={variants} pentagonState={!chartState} />
                 </main>
