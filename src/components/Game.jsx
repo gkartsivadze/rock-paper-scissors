@@ -33,13 +33,13 @@ export default function Game({ variants, setScore }) {
             setTimeout(() => {
                 if (variants.find(x => x.id == randomNum).wins.includes(choosen)) {
                     add()
-                    Action(choosen, 1);
-                    setChartState(1)
                 } else if (randomNum == choosen) {
-                    Action();
+                    
                 } else {
                     reset();
                 }
+                Action(choosen, 1);
+                setChartState(1)
             }, 1500)
 
 
