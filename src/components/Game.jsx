@@ -3,7 +3,7 @@ import Choose from "./Choose";
 import Rules from "./Rules";
 import Chart from "./Chart";
 import ComputerChoice from "./ComputerChoice";
-import LostAction from "../actions/LostAction";
+import Action from "../actions/Action";
 import ResetAction from "../actions/ResetAction";
 
 
@@ -30,19 +30,17 @@ export default function Game({ variants, setScore }) {
                 element.classList.add("active")
             })
 
-            if (variants.find(x => x.id == randomNum).wins.includes(choosen)) {
-                setTimeout(() => {
+            setTimeout(() => {
+                if (variants.find(x => x.id == randomNum).wins.includes(choosen)) {
                     add()
-                    LostAction(choosen);
+                    Action(choosen, 1);
                     setChartState(1)
-                }, 1500)
-            } else if (randomNum == choosen) {
-
-            } else {
-                setTimeout(() => {
+                } else if (randomNum == choosen) {
+                    Action();
+                } else {
                     reset();
-                }, 1500)
-            }
+                }
+            }, 1500)
 
 
 
