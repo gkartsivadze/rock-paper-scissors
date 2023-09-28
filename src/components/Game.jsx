@@ -4,6 +4,7 @@ import Rules from "./Rules";
 import Chart from "./Chart";
 import ComputerChoice from "./ComputerChoice";
 import LostAction from "../actions/LostAction";
+import ResetAction from "../actions/ResetAction";
 
 
 export const ChoosenContext = createContext()
@@ -20,7 +21,7 @@ export default function Game({ variants, setScore }) {
 
             setChartEnabledState(true)
             // let randomNum = Math.round(Math.random() * 4 + 1)
-            let randomNum = Math.round(1) // TEST
+            let randomNum = 1 // TEST
             setComputerSymbol(randomNum)
 
             document.getElementById(`variant_button_${choosen}`).classList.add("user_choice_active");
@@ -59,7 +60,7 @@ export default function Game({ variants, setScore }) {
     }
 
     function rematch() {
-
+        ResetAction(choosen, setChoosen, setChartEnabledState, setChartState, setComputerSymbol);
     }
 
     return (
