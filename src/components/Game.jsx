@@ -5,6 +5,7 @@ import Chart from "./Chart";
 import ComputerChoice from "./ComputerChoice";
 import Action from "../actions/Action";
 import ResetAction from "../actions/ResetAction";
+import WinnerAction from "../actions/WinnerAction";
 
 
 export const ChoosenContext = createContext()
@@ -20,15 +21,15 @@ export default function Game({ variants, setScore }) {
     useEffect(() => {
         if (choosen) {
 
-            setChartEnabledState(true)
+            setChartEnabledState(true);
             // let randomNum = Math.round(Math.random() * 4 + 1)
             let randomNum = 1 // TEST
-            setComputerSymbol(randomNum)
+            setComputerSymbol(randomNum);
 
             document.getElementById(`variant_button_${choosen}`).classList.add("user_choice_active");
 
             document.querySelectorAll(`button[data-choice-button]:not(#variant_button_${choosen})`).forEach(element => {
-                element.classList.add("active")
+                element.classList.add("active");
             })
 
             setTimeout(() => {
@@ -42,7 +43,7 @@ export default function Game({ variants, setScore }) {
                     setLabelText("YOU LOST");
                 }
                 Action(choosen, 1);
-                setChartState(1)
+                setChartState(1);
             }, 1500)
 
 
@@ -51,11 +52,13 @@ export default function Game({ variants, setScore }) {
     }, [choosen])
 
     function add() {
-        setScore(prev => prev + 1)
+        setScore(prev => prev + 1);
+        WinnerAction(document.getElementById(`variant_button_${choosen}`));
     }
 
     function reset() {
-        setScore(0)
+        setScore(0);
+        WinnerAction(document.getElementById("computer_choice"));
     }
 
     function rematch() {
