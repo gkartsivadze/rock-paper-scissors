@@ -15,6 +15,7 @@ export default function Game({ variants, setScore }) {
     const [chartEnabledState, setChartEnabledState] = useState(false)
     const [chartState, setChartState] = useState(0)
     const [computerSymbol, setComputerSymbol] = useState();
+    const [labelText, setLabelText] = useState("")
 
     useEffect(() => {
         if (choosen) {
@@ -33,10 +34,12 @@ export default function Game({ variants, setScore }) {
             setTimeout(() => {
                 if (variants.find(x => x.id == randomNum).wins.includes(choosen)) {
                     add()
+                    setLabelText("YOU WON");
                 } else if (randomNum == choosen) {
-                    
+                    setLabelText("DRAW");
                 } else {
                     reset();
+                    setLabelText("YOU LOST");
                 }
                 Action(choosen, 1);
                 setChartState(1)
@@ -49,12 +52,10 @@ export default function Game({ variants, setScore }) {
 
     function add() {
         setScore(prev => prev + 1)
-        console.log("add");
     }
 
     function reset() {
         setScore(0)
-        console.log("reset");
     }
 
     function rematch() {
@@ -66,7 +67,7 @@ export default function Game({ variants, setScore }) {
             <ChoosenContext.Provider value={setChoosen}>
                 <main id="choose" className="relative h-full w-full">
                     {chartEnabledState && <>
-                        <Chart chartState={chartState} rematch={rematch} />
+                        <Chart chartState={chartState} rematch={rematch} labelText={labelText} />
                         <ComputerChoice variant={variants.find(x => x.id == computerSymbol)} />
                     </>}
                     <Choose variants={variants} pentagonState={!chartEnabledState} />

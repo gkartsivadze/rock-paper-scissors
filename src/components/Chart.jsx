@@ -1,6 +1,6 @@
 import { useState } from "react"
 
-export default function Chart({ chartState = 0, rematch }) {
+export default function Chart({ chartState = 0, rematch, labelText = "" }) {
     const [showState, setShowState] = useState(false)
 
     setTimeout(() => {
@@ -12,7 +12,7 @@ export default function Chart({ chartState = 0, rematch }) {
                 showState
                 &&
                 <div className="grid w-[20vw] absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
-                    <h1 className="text-5xl text-center py-2">YOU WON</h1>
+                    <h1 className="text-5xl text-center py-2">{ labelText }</h1>
                     <button className=" bg-white text-dark rounded-md px-12 py-2" onClick={rematch}>RESET</button>
                 </div>
             }
