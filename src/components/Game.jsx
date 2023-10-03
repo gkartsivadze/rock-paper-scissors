@@ -30,6 +30,7 @@ export default function Game({ variants, setScore }) {
 
             document.querySelectorAll(`button[data-choice-button]:not(#variant_button_${choosen})`).forEach(element => {
                 element.classList.add("active");
+                element.setAttribute("disabled", true)
             })
 
             setTimeout(() => {
