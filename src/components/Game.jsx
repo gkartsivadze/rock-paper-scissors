@@ -22,8 +22,7 @@ export default function Game({ variants, setScore }) {
         if (choosen) {
 
             setChartEnabledState(true);
-            // let randomNum = Math.round(Math.random() * 4 + 1)
-            let randomNum = 1 // TEST
+            let randomNum = Math.round(Math.random() * 4 + 1)
             setComputerSymbol(randomNum);
 
             document.getElementById(`variant_button_${choosen}`).classList.add("user_choice_active");

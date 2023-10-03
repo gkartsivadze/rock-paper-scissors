@@ -17,10 +17,10 @@ export default function Chart({ chartState = 0, rematch, labelText = "" }) {
                 </div>
             }
             <div className={`absolute top-1/2 left-1/2 transition-all ${chartState == 0 ? "-translate-x-[calc(50%+10vw)]" : "-translate-x-[calc(50%+20vw)]"} -translate-y-1/2 rounded-full bg-black/50 w-[14vw] aspect-square`}>
-                <h1 className=" -translate-y-20 text-2xl text-center font-bold">YOU PICKED</h1>
+                <h1 className=" absolute left-1/2 -top-20 -translate-x-1/2 text-2xl text-center font-bold w-max">YOU PICKED</h1>
             </div>
             <div className={`absolute top-1/2 left-1/2 transition-all ${chartState == 0 ? "-translate-x-[calc(50%-10vw)]" : "-translate-x-[calc(50%-20vw)]"} -translate-y-1/2 rounded-full bg-black/50 w-[14vw] aspect-square`}>
-                <h1 className=" -translate-y-20 text-2xl text-center font-bold">THE HOUSE PICKED</h1>
+                <h1 className=" absolute left-1/2 -top-20 -translate-x-1/2 text-2xl text-center font-bold w-max">THE HOUSE PICKED</h1>
             </div>
         </>
     )
